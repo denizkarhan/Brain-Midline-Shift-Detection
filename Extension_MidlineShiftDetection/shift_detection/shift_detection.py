@@ -393,14 +393,15 @@ class shift_detectionLogic(ScriptedLoadableModuleLogic):
             categories = predictions[:, 5]
 
             # Find best detections for each category
+            # All threshold values are balanced. You can get the most accurate outputs with values of 0.6-0.8.
             AF, PF, SP = -1, -1, -1
             for i, (category, score) in enumerate(zip(categories, scores)):
                 if category == 0 and (AF == -1 or scores[AF] <= score):
-                    if score > 0.40: AF = i
+                    if score > 0.70: AF = i
                 elif category == 1 and (PF == -1 or scores[PF] <= score):
-                    if score > 0.25: PF = i
+                    if score > 0.70: PF = i
                 elif category == 2 and (SP == -1 or scores[SP] <= score):
-                    if score > 0.35: SP = i
+                    if score > 0.70: SP = i
 
             # Check if all required points are detected
             if AF == -1 or PF == -1 or SP == -1:
