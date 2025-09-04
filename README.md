@@ -14,6 +14,9 @@
     - [Model Selection and Preparation](#model-selection-and-preparation)
     - [Integration Steps](#integration-steps)
     - [Application Overview](#application-overview)
+* [Clinical Validation](#clinical-validation)
+    - [Comparative outputs on the ReMIND dataset](#comparative-outputs-on-the-remind-dataset)
+    - [Comparative outputs on the BraTS dataset](#comparative-outputs-on-the-brats-dataset)
 * [Additional Models and Files](#additional-models-and-files)
 
 
@@ -121,11 +124,41 @@ To increase the robustness of the model, data augmentation techniques have been 
 - **Detection and Storage**: Detected points were stored and saved as JSON files compatible with 3D Slicer.
 - **Visualization**: Outputs were visualized in 3D Slicer, providing a comprehensive view of the detected points and their spatial relationships.
 
+<img width="1920" height="1080" alt="Anterior" src="https://github.com/user-attachments/assets/5edc646c-bbfc-4fea-9ea7-5654b487f956" />
+
 #### Application Overview
 - **Nibabel Library**: Used to read MRI images.
 - **OpenCV Library**: Used for image processing, including reading axial section images, converting them to grayscale, and normalizing them.
 - **Model Rotation**: Applied to correctly align images for better detection accuracy.
 - **Creating JSON Files**: Used to store detected points and save them as JSON files compatible with 3D Slicer for visualization.
+
+<p align="center"> <img width="480" height="480" alt="Screenshot_5" src="https://github.com/user-attachments/assets/f1856863-d8fb-4df5-a9ab-836af0777a6c" /> </p>
+
+
+
+---
+
+## **Clinical Validation**
+
+To evaluate the model’s performance in a clinical context, predicted and ground-truth (GT) midline shift values are compared for selected patients from the ReMIND and BraTS datasets.
+The predicted shift is calculated as the perpendicular Euclidean distance between the SP point identified by YOLOv5m and the predicted ideal midline, which is defined using the AF and PF points also predicted by YOLOv5m.
+Likewise, the GT shift is calculated as the perpendicular Euclidean distance between the SP point annotated by an expert surgeon and the GT ideal midline, determined according to the expert-annotated AF and PF points.
+This validation procedure provides a reliable assessment of the model’s accuracy and its potential clinical applicability.
+The following images provide an overview of the landmark detection performance and centerline shift calculation for 5 patients in the BraTS dataset and 7 patients in the ReMIND dataset.
+
+
+### **Comparative outputs on the ReMIND dataset**
+Experiments on the ReMIND dataset are conducted using data from seven randomly selected patients (IDs: 20, 24, 25, 58, 72, 103, and 113). As noted earlier, a confidence
+threshold of 0.7 is applied to the AF, SP, and PF detections in each slice. Consequently, nine slices were excluded from the experiments as their confidence scores fell below the threshold set by the YOLOv5m model.
+
+<p align="center"> <img width="800" alt="brain_shift_images_REMIND_new" src="https://github.com/user-attachments/assets/a9497cdd-c819-4a78-993e-937e4f5a0421" /> </p>
+
+### **Comparative outputs on the BraTS dataset**
+To assess the generalizability of the system, experiments are conducted on the BraTS 2024 dataset using data from five randomly selected patients (IDs: 106, 107, 242, 937, and 1155).
+As previously mentioned, a confidence threshold of 0.7 was applied to the AF, SP, and PF detections on each slice.
+Consequently, 17 slices were excluded from the experiments because their confidence scores fell below the threshold set by the YOLOv5m model.
+
+<p align="center"> <img width="800" alt="brain_shift_images-BrATS" src="https://github.com/user-attachments/assets/bbc40d4b-ab1a-4c4c-afab-05c98cf66ab3" /> </p>
 
 ---
 
