@@ -1,4 +1,23 @@
-# 3D Slicer Extension for Brain Midline Shift Detection
+# Towards Robust Brain Midline Shift Detection: A YOLO-Based 3D Slicer Extension with a Novel Dataset
+
+This repository contains the dataset and source code accompanying the paper:
+
+If you use this dataset or code, please cite:
+
+Kurt Pehlivanoğlu, M., Albayrak, N.B., Karhan, D. et al. Towards Robust Brain Midline Shift Detection: A YOLO-Based 3D Slicer Extension with a Novel Dataset. Neuroinform 23, 50 (2025). https://doi.org/10.1007/s12021-025-09748-z
+
+📄 [Read the paper](https://doi.org/10.1007/s12021-025-09748-z)
+
+This repository provides:
+- A **novel MRI-based dataset** for detecting three anatomical brain landmarks:
+  - **AF (Anterior Falx)**
+  - **PF (Posterior Falx)**
+  - **SP (Septum Pellucidum)**
+- A **YOLOv5m-based deep learning model** optimized for brain midline shift detection.
+- An **integrated 3D Slicer extension** for automatic, real-time detection and visualization of midline shift in brain MRIs.
+
+
+
 
 ## Table of Contents
 
