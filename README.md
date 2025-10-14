@@ -1,6 +1,6 @@
 # Towards Robust Brain Midline Shift Detection: A YOLO-Based 3D Slicer Extension with a Novel Dataset
 
-This repository contains the dataset and source code accompanying the paper:
+This repository contains the **brain-midline-detection-dataset** and source code accompanying the paper:
 
 If you use this dataset or code, please cite:
 
